@@ -12,4 +12,5 @@ export async function clearDatabase(){
     await getManager().query('TRUNCATE categories RESTART IDENTITY CASCADE');
     await getManager().query('TRUNCATE disciplines RESTART IDENTITY CASCADE');
     await getManager().query('TRUNCATE semesters RESTART IDENTITY CASCADE');
+    await getManager().query('TRUNCATE professors RESTART IDENTITY CASCADE');
 }
