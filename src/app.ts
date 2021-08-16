@@ -10,6 +10,7 @@ import { errorHandler } from "./middlewares/errorHandler";
 import * as categoriesController from "./controllers/categoriesController";
 import * as disciplinesController from "./controllers/disciplinesController";
 import * as disciplinesProfessorsController from "./controllers/disciplinesProfessorsController";
+import * as professorsController from "./controllers/professorsController";
 import * as examsController from "./controllers/examsController";
 
 const app = express();
@@ -21,6 +22,8 @@ app.get("/categories", categoriesController.getCategories);
 app.get("/disciplines", disciplinesController.getDisciplines);
 app.get("/disciplines/:id/professors", disciplinesProfessorsController.getProfessorsByDisciplines);
 app.get("/disciplines/:id/exams", examsController.loadExamsByDiscipline)
+app.get("/professors", professorsController.getProfessors);
+// app.get("/professors/:id/exams", examsController.loadExamsByProfessor)
 app.post("/send/exam", examsController.saveNewExam);
 
 export async function init () {
