@@ -18,7 +18,7 @@ afterAll(async () => {
 });
 
 describe("GET /disciplines", () => {
-  it("should answer with status 200 and an array with every discipline available", async () => {
+  it("should return status 200 and an array with every discipline available", async () => {
     await createDisciplines();
     const response = await supertest(app).get("/disciplines"); 
     expect(response.body.length).toEqual(3);

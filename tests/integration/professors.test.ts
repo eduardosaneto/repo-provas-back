@@ -18,7 +18,7 @@ afterAll(async () => {
 });
 
 describe("GET /professors", () => {
-  it("should answer with status 200 and an array with every professor available", async () => {
+  it("should return status 200 and an array with every professor available", async () => {
     await createProfessors();
     const response = await supertest(app).get("/professors"); 
     expect(response.body.length).toEqual(3);

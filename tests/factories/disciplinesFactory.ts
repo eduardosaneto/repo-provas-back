@@ -1,4 +1,5 @@
 import { getRepository } from "typeorm";
+import faker from "faker";
 
 import Semesters from "../../src/entities/Semesters";
 import Disciplines from "../../src/entities/Disciplines";
@@ -6,9 +7,9 @@ import Disciplines from "../../src/entities/Disciplines";
 export async function createDisciplines () {
   await createSemesters();
   const disciplines = [
-    { name: "Cálculo 1", semesterId: 1 },
-    { name: "Cálculo 2", semesterId: 2 },
-    { name: "Cálculo 3", semesterId: 3 }
+    { name: faker.name.title(), semesterId: 1 },
+    { name: faker.name.title(), semesterId: 2 },
+    { name: faker.name.title(), semesterId: 3 }
   ]
   await getRepository(Disciplines).save(disciplines);
 }
