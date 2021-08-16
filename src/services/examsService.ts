@@ -1,8 +1,8 @@
 import { getRepository } from "typeorm";
 
 import Exams from "../entities/Exams";
+import { Exam } from "../interfaces/Exam";
 
-export async function saveExam () {
-  const relations = await getRepository(Exams).find();
-  return relations;
+export async function saveExam (params: Exam) {
+  await getRepository(Exams).insert(params);
 }
