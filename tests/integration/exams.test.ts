@@ -86,7 +86,7 @@ describe('GET /professors/professorId/exams',()=>{
   })
 })
 
-describe('GET /disciplines/professorId/exams',()=>{
+describe('GET /disciplines/disciplineId/exams',()=>{
   it('should return status 200 and an array with every exam available for a discipline', async ()=>{
       await createExam();
       const response = await supertest(app).get('/disciplines/1/exams');
