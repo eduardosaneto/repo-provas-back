@@ -8,7 +8,9 @@ export async function saveNewExam (req: Request, res: Response) {
     if(error) return res.sendStatus(400); 
 
     const examParams = req.body;
-    await examsService.saveExam(examParams);
+    const exam = await examsService.saveExam(examParams);
+    if (exam === 0) res.sendStatus(404);
+    else if (exam === 1) res.sendStatus(409);
     res.sendStatus(201);
 }
 
