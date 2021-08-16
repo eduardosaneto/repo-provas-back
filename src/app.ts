@@ -20,7 +20,7 @@ app.use(errorHandler);
 app.get("/categories", categoriesController.getCategories);
 app.get("/disciplines", disciplinesController.getDisciplines);
 app.get("/disciplines/:id/professors", disciplinesProfessorsController.getProfessorsByDisciplines);
-// app.post("/send", examsController.sendNewExam);
+app.post("/send", examsController.saveNewExam);
 
 export async function init () {
   await connectDatabase();
