@@ -2,7 +2,7 @@ import supertest from "supertest";
 import { getConnection } from "typeorm";
 
 import app, { init } from "../../src/app";
-import { createDisciplines } from "../factories/disciplineFactory";
+import { createProfessors } from "../factories/professorsFactory";
 import { clearDatabase } from "../utils/database";
 
 beforeAll(async () => {
@@ -18,8 +18,8 @@ afterAll(async () => {
 });
 
 describe("GET /disciplines", () => {
-  it("should answer with status 200 and an array with every discipline available", async () => {
-    await createDisciplines();
+  it("should answer with status 200 and an array with every professor available", async () => {
+    await createProfessors();
     const response = await supertest(app).get("/disciplines"); 
     expect(response.status).toBe(200);
   });
