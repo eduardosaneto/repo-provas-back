@@ -13,9 +13,9 @@ export default class DisciplinesProfessors{
     @Column()    
     professorId: number
 
-    @ManyToOne(() => Disciplines, d => d.disciplineProfessor)
+    @ManyToOne(() => Disciplines, d => d.disciplineProfessors)
     discipline: Disciplines;
 
-    @ManyToOne(() => Professors, p => p.disciplineProfessor)
+    @ManyToOne(() => Professors, p => p.disciplineProfessors)
     professor: Professors;
 }
