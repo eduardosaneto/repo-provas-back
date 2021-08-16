@@ -6,13 +6,21 @@ import "reflect-metadata";
 
 import connectDatabase from "./database";
 
-import * as userController from "./controllers/userConroller";
+import { errorHandler } from "./middlewares/errorHandler";
+import * as categoriesController from "./controllers/categoriesController";
+import * as disciplinesController from "./controllers/disciplinesController";
+import * as disciplinesProfessorsController from "./controllers/disciplinesProfessorsController";
+import * as examsController from "./controllers/examsController";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(errorHandler);
 
-app.get("/users", userController.getUsers);
+app.get("/categories", categoriesController.getCategories);
+app.get("/disciplines", disciplinesController.getDisciplines);
+app.get("/disciplines/:id/professors", disciplinesProfessorsController.getProfessorsByDisciplines);
+app.post("/send/exam", examsController.saveNewExam);
 
 export async function init () {
   await connectDatabase();
