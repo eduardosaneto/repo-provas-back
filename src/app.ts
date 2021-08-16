@@ -23,7 +23,7 @@ app.get("/disciplines", disciplinesController.getDisciplines);
 app.get("/disciplines/:id/professors", disciplinesProfessorsController.getProfessorsByDisciplines);
 app.get("/disciplines/:id/exams", examsController.loadExamsByDiscipline)
 app.get("/professors", professorsController.getProfessors);
-// app.get("/professors/:id/exams", examsController.loadExamsByProfessor)
+app.get("/professors/:id/exams", examsController.loadExamsByProfessor)
 app.post("/send/exam", examsController.saveNewExam);
 
 export async function init () {

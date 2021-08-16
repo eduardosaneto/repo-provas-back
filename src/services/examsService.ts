@@ -14,3 +14,11 @@ export async function getExamsByDiscipline (disciplineId: number) {
   });
   return exams;
 }
+
+export async function getExamsByProfessor (professorId: number) {
+  const exams = await getRepository(Exams).find({
+    where: {professorId},
+    relations: ["discipline", "category"]
+  });
+  return exams;
+}

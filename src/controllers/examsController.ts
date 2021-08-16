@@ -17,3 +17,9 @@ export async function loadExamsByDiscipline (req: Request, res: Response) {
     const exams = await examsService.getExamsByDiscipline(disciplineId);
     res.send(exams);
 }
+
+export async function loadExamsByProfessor (req: Request, res: Response) {
+    const professorId = Number(req.params.id);
+    const exams = await examsService.getExamsByProfessor(professorId);
+    res.send(exams);
+}
