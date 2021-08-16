@@ -92,7 +92,6 @@ export async function createExam () {
   await getRepository(Exams).insert(body);
 }
 
-
 async function generatePrimaryData() {
   await createCategories();
   await createDisciplines();

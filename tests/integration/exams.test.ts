@@ -2,6 +2,8 @@ import supertest from "supertest";
 import { getConnection } from "typeorm";
 
 import app, { init } from "../../src/app";
+import { createCategories } from "../factories/categoriesFactory";
+import { createDisciplines } from "../factories/disciplinesFactory";
 import { 
   getExamsParameters, 
   getWrongNameParam, 
@@ -72,5 +74,23 @@ describe('POST /send/exam',()=>{
       const body = await getExamsParameters();
       const response = await supertest(app).post('/send/exam').send(body);
       expect(response.status).toEqual(201);
+  })
+})
+
+describe('GET /professors/professorId/exams',()=>{
+  it('should return status 200 and an array with every exam available for a professor', async ()=>{
+      await createExam();
+      const response = await supertest(app).get('/professors/1/exams')
+      expect(response.body.length).toEqual(1);
+      expect(response.status).toBe(200);
+  })
+})
+
+describe('GET /disciplines/professorId/exams',()=>{
+  it('should return status 200 and an array with every exam available for a discipline', async ()=>{
+      await createExam();
+      const response = await supertest(app).get('/disciplines/1/exams');
+      expect(response.body.length).toEqual(1);
+      expect(response.status).toBe(200);
   })
 })
