@@ -11,3 +11,9 @@ export async function saveNewExam (req: Request, res: Response) {
     await examsService.saveExam(examParams);
     res.sendStatus(201);
 }
+
+export async function loadExamsByDiscipline (req: Request, res: Response) {
+    const disciplineId = Number(req.params.id);
+    const exams = await examsService.getExamsByDiscipline(disciplineId);
+    res.send(exams);
+}

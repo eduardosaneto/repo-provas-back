@@ -20,6 +20,7 @@ app.use(errorHandler);
 app.get("/categories", categoriesController.getCategories);
 app.get("/disciplines", disciplinesController.getDisciplines);
 app.get("/disciplines/:id/professors", disciplinesProfessorsController.getProfessorsByDisciplines);
+app.get("/disciplines/:id/exams", examsController.loadExamsByDiscipline)
 app.post("/send/exam", examsController.saveNewExam);
 
 export async function init () {
