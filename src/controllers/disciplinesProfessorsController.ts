@@ -2,7 +2,8 @@ import { Request, Response } from "express";
 
 import * as disciplinesProfessorsService from "../services/disciplinesProfessorsService";
 
-export async function getDisciplinesAndProfessors (req: Request, res: Response) {
-    const relations = await disciplinesProfessorsService.getAllRelations();
-    res.send(relations);
+export async function getProfessorsByDisciplines (req: Request, res: Response) {
+    const disciplineId = Number(req.params.id);
+    const professors = await disciplinesProfessorsService.getProfessors(disciplineId);
+    res.send(professors);
 }
