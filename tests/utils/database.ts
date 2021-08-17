@@ -10,6 +10,7 @@ export async function endConnection(){
 
 export async function clearDatabase(){
     await getManager().query('TRUNCATE exams RESTART IDENTITY CASCADE');
+    await getManager().query('TRUNCATE disciplines_professors RESTART IDENTITY CASCADE');
     await getManager().query('TRUNCATE categories RESTART IDENTITY CASCADE');
     await getManager().query('TRUNCATE disciplines RESTART IDENTITY CASCADE');
     await getManager().query('TRUNCATE semesters RESTART IDENTITY CASCADE');
