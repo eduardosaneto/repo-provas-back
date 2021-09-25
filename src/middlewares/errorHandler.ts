@@ -1,11 +1,12 @@
-  
 import { NextFunction, Request, Response } from "express";
 
+/* eslint-disable-next-line */
 function errorHandler(err: any, req: Request, res: Response, next: NextFunction) {
-    if (err) {
-        console.log(err);
-        res.status(500).send(err);
-    }
+  if (err) {
+    /* eslint-disable-next-line no-console */
+    console.log(err);
+    res.status(500).send(err);
+  }
 }
 
-export { errorHandler }
+export { errorHandler };

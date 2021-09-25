@@ -1,4 +1,18 @@
-require('dotenv').config();
+/* eslint @typescript-eslint/no-var-requires: "off" */
+const dotenv = require("dotenv");
+const fs = require("fs");
+const path = require("path");
+
+try {
+  const envPath = process.env.NODE_ENV === "test" ? ".env.test" : ".env";
+  const envConfig = dotenv.parse(fs.readFileSync(path.join(__dirname, envPath)));
+
+  for (const config in envConfig) {
+    process.env[config] = envConfig[config];
+  }
+} catch (err) {
+  console.error(err);
+}
 
 module.exports = {
   type: "postgres",
@@ -8,10 +22,11 @@ module.exports = {
   migrations: ["dist/migrations/*.js"],
   cli: {
     migrationsDir: "src/migrations",
-    entitiesDir: "dist/entities/*.js"
+    entitiesDir: "dist/entities/*.js",
   },
   extra: {
-    ssl:{
-      rejectUnauthorized:false,
-  }}
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 };

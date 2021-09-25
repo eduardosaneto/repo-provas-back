@@ -4,7 +4,7 @@ import Disciplines from "./Disciplines";
 import Professors from "./Professors";
 
 @Entity("exams")
-export default class Exams{
+export default class Exams {
     @PrimaryGeneratedColumn()
     id: number;
 
